@@ -1,0 +1,49 @@
+.customScroll {
+  position: relative;
+}
+
+.viewport {
+  overflow: auto;
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE/Edge old */
+  -ms-overflow-style: none;
+}
+.viewport::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
+
+.track {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: 2px;
+  width: 0.25rem;
+  border-radius: 9999px;
+  background: transparent;
+  pointer-events: auto; /* allow drag/click interactions; wheel still bubbles to viewport */
+  will-change: opacity, transform;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 24px;
+  border-radius: 9999px;
+  /* Accent gradient to echo chart fill */
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--chart-accent) 45%, transparent),
+    color-mix(in oklab, var(--chart-accent) 15%, transparent)
+  );
+  box-shadow: 0 0 0 2px transparent inset; /* optical thinning */
+  opacity: 0.9;
+  will-change: opacity;
+  transition: opacity 200ms ease;
+}
+
+.customScroll:hover .thumb {
+  opacity: 1;
+}
