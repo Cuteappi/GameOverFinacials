@@ -17,8 +17,8 @@ export default function Home() {
 	const resetLayout = useAppStore((s) => s.resetLayout)
 
 	return (
-		<div className="h-dvh overflow-hidden aurora-bg flex flex-col">
-			<ResizablePanelGroup direction="horizontal" className="flex-1 min-h-0 h-full">
+		<div className="h-screen aurora-bg flex flex-col">
+			<ResizablePanelGroup direction="horizontal" className="flex-1 h-full">
 				{/* Sidebar: Inputs (resizable) */}
 				<ResizablePanel defaultSize={24} minSize={16} maxSize={40} className="min-w-[240px] min-h-0 h-full">
 					<AppSidebar />
@@ -28,26 +28,19 @@ export default function Home() {
 
 				{/* Main: KPIs + Charts + Panels (scrollable) */}
 				<ResizablePanel defaultSize={76} minSize={40}>
-					<CustomScroll className="flex-1 min-h-0">
-						<div className="p-4 pr-3 overflow-y">
-							<div className="flex items-center gap-2">
+					<CustomScroll className="flex">
+						<div className="p-4 pr-3 overflow-y-hidden">
+							<div className="flex items-center gap-4 h-[380px]">
 								<KpiGrid />
 								<MainChart />
 							</div>
 
-							<div className="mt-6 flex justify-end">
-								<Button variant="outline" size="sm" onClick={resetLayout}>
-									Reset layout
-								</Button>
-							</div>
 
-							<SecondaryPanels />
 
 							<PairPanels />
+							<SecondaryPanels />
 
-							<FinancingSummary />
-
-							<ScenarioSection />
+							{/* <ScenarioSection /> */}
 						</div>
 					</CustomScroll>
 				</ResizablePanel>

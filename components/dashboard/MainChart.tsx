@@ -10,7 +10,7 @@ export function MainChart() {
 	const inputs = useAppStore((s) => s.inputs)
 	const data = React.useMemo(() => pcsRevenueSeries(inputs, 30), [inputs])
 	return (
-		<Card>
+		<Card className="grid flex-2 h-full">
 			<CardHeader>
 				<div className="flex items-center justify-between gap-3">
 					<div>
